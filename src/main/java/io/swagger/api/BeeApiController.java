@@ -1,7 +1,6 @@
 package io.swagger.api;
 
 import io.swagger.model.BeeResponse;
-
 import io.swagger.annotations.*;
 
 import org.springframework.http.HttpStatus;
@@ -15,20 +14,24 @@ import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
-
+import java.util.concurrent.atomic.AtomicLong;
 
 @javax.annotation.Generated(value = "class io.swagger.codegen.languages.SpringCodegen", date = "2016-11-01T19:28:28.888Z")
-
 @Controller
 public class BeeApiController implements BeeApi {
 
-    public ResponseEntity<BeeResponse> beeBeeidGet(
-@ApiParam(value = "",required=true ) @PathVariable("beeid") String beeid
+	private final AtomicLong counter = new AtomicLong();
+	
+	public ResponseEntity<BeeResponse> beeBeeidGet(
+			@ApiParam(value = "", required = true) @PathVariable("beeid") String beeid
 
-
-) {
-        // do some magic!
-        return new ResponseEntity<BeeResponse>(HttpStatus.OK);
-    }
+	) {
+		// do some magic!
+		BeeResponse response = new BeeResponse();
+		response.setAutoIncrementValue(String.valueOf(counter.incrementAndGet()));
+		response.setEchoValue(beeid);
+		
+		return new ResponseEntity<BeeResponse>(response, HttpStatus.OK);
+	}
 
 }

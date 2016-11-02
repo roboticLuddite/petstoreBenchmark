@@ -16,21 +16,15 @@ import org.springframework.web.multipart.MultipartFile;
 import java.util.List;
 
 @javax.annotation.Generated(value = "class io.swagger.codegen.languages.SpringCodegen", date = "2016-11-01T19:28:28.888Z")
-
 @Api(value = "bee", description = "the bee API")
 public interface BeeApi {
 
-    @ApiOperation(value = "", notes = "", response = BeeResponse.class, tags={  })
-    @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "200 response", response = BeeResponse.class) })
-    @RequestMapping(value = "/bee/{beeid}",
-        produces = { "application/json" }, 
-        consumes = { "application/json" },
-        method = RequestMethod.GET)
-    ResponseEntity<BeeResponse> beeBeeidGet(
-@ApiParam(value = "",required=true ) @PathVariable("beeid") String beeid
+	@ApiOperation(value = "", notes = "", response = BeeResponse.class, tags = {})
+	@ApiResponses(value = { @ApiResponse(code = 200, message = "200 response", response = BeeResponse.class) })
+	@RequestMapping(value = "/bee/{beeid}", produces = { "application/json" }, consumes = { "application/json" }, method = RequestMethod.GET)
+	ResponseEntity<BeeResponse> beeBeeidGet(
+			@ApiParam(value = "", required = true) @PathVariable("beeid") String beeid
 
-
-);
+	);
 
 }
